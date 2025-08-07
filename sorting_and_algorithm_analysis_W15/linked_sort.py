@@ -2,7 +2,7 @@ class Node:
     data : int
     next : "Node" 
 
-    def __init__(self, data, next = None):
+    def __init__(self, data, next = None ):
         self.data = data
         self.next = next
 
@@ -15,34 +15,40 @@ class LinkedList:
 
     def sort_linked_list(self):
         if not self.head or not self.head.next:
-            raise TypeError(f'Nodes are empty. Closing program')
+            raise TypeError('Nodes are empty. Closing program')
         
         current_node = self.head
-        
         while current_node:
             if not isinstance(current_node.data, (int, float)):
                 raise TypeError(f'Invalid data type: {current_node.data} is not a number')
             current_node = current_node.next
-        
+
         while True:
-            current_node = self.head
             self.counter_iterations += 1
             self.made_change = False
-            while current_node and current_node.next is not None:
+            prevs_node = None
+            current_node = self.head
+            while current_node and current_node.next:
                 if current_node.data > current_node.next.data:
-                    current_node.data, current_node.next.data = current_node.next.data, current_node.data
+                    next_node = current_node.next
+                    current_node.next = next_node.next
+                    next_node.next = current_node
+                    if prevs_node:
+                        prevs_node.next = next_node
+                    else:
+                        self.head = next_node 
+                    prevs_node = next_node
                     self.made_change = True
                     self.counter_changes += 1
-                current_node = current_node.next
+                else:
+                    prevs_node = current_node
+                    current_node = current_node.next
             if not self.made_change:
                 return
             
 
     def print_structure(self, label="Linked List Structure"):
         print(f"\n{label}:")
-        if not self.head:
-            print("List is empty.")
-            return
         current_node = self.head
         while current_node is not None:
             print(f'current node: {current_node.data}')
@@ -97,3 +103,5 @@ ll.print_structure("Linked List Sorted Structure")
 
 # ll.sort_linked_list()
 # ll.print_structure("Linked List Sorted Structure")
+
+#do not modify, change nodes of place

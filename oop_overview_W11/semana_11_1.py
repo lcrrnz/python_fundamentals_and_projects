@@ -7,11 +7,16 @@ class Circle:
 
     def get_area(self):
         area = float(3.14 * self.radius ** 2)
-        print(f'The circle area with a radius of {self.radius} is = {area} m2')
+        return area
 
 
 circle_1 = Circle()
 circle_1.get_area()
+print(f'The circle area with a radius of {circle_1.radius} is = {circle_1.get_area()} m2')
+
+
+
 circle_1.radius = float(input("what's your circle's radius: "))
 circle_1.get_area()
-
+print(f'{circle_1.radius} , {circle_1.get_area()}')
+print(f'The circle area with a radius of {circle_1.radius} is = {circle_1.get_area()} m2')

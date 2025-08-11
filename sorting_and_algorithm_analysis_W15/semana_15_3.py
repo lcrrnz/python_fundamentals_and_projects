@@ -70,3 +70,4 @@ def generate_list_trios(list_a, list_b, list_c):
 	return result_list 
 
 #generate_list_trios will fall under O(n**3) because for every items in A and B, it loops through all of C. a * b * c = O(n**3)
+#completed

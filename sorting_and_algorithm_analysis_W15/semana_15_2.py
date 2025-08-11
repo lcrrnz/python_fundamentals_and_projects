@@ -118,3 +118,5 @@ final_result = sort_lowest(validate_list(test))
 linked_list = LinkedList(None)
 linked_list.build_linked_list_from_list(final_result)
 linked_list.print_structure()
+
+#other way to do linked list
